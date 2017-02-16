@@ -67,18 +67,16 @@ $(function() {
         //before the testing framework is run, the loadFeed() function should have
         //been invoked
         beforeEach(function(done) {
-            loadFeed(0, function() {
-                done();
-            });
+            loadFeed(0, done);
         });
 
         //Ensures that the feed container has atleast one entry from the
         //the Ajax response
         it('feed container has atleast 1 entry', function() {
-            var entryNumber = $('.entry').length;
+            var entryNumber = $('.feed .entry').length;
             expect(entryNumber).toBeGreaterThan(0);
-            });
         });
+    });
 
     //The 'New Feed Selection' test suite ensures that the content is changed
     //,every time a new RSS feed is loaded.
@@ -102,7 +100,7 @@ $(function() {
             var newFeedSelection = document.querySelector(".feed").innerHTML;
             expect(initFeedSelection).not.toBe(newFeedSelection);
             done();
-            });
         });
+    });
 
 }());
